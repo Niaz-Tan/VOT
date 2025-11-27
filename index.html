@@ -34,40 +34,16 @@
         background-color: #4b5563;
         font-weight: 600;
       }
+      .locked-category {
+        opacity: 0.7;
+      }
       .logo-text {
         font-family: "Orbitron", sans-serif;
         font-weight: 900;
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        text-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
       }
-      .gradient-border {
-        position: relative;
-        background: linear-gradient(135deg, #1f2937, #111827);
-        padding: 1px;
-        border-radius: 0.75rem;
-      }
-      .gradient-border::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        border-radius: 0.75rem;
-        padding: 2px;
-        background: linear-gradient(135deg, #667eea, #764ba2);
-        -webkit-mask: linear-gradient(#fff 0 0) content-box,
-          linear-gradient(#fff 0 0);
-        -webkit-mask-composite: xor;
-        mask-composite: exclude;
-      }
-      .creator-card {
-        background: linear-gradient(135deg, #1f2937, #111827);
-        border-left: 4px solid #764ba2;
-      }
-      /* Mobile responsive styles */
       @media (max-width: 768px) {
         .sidebar {
           position: fixed;
@@ -95,40 +71,6 @@
         .overlay.open {
           display: block;
         }
-        .main-content {
-          height: auto;
-          overflow-y: visible;
-        }
-      }
-
-      /* Custom scrollbar for sidebar */
-      .sidebar::-webkit-scrollbar {
-        width: 6px;
-      }
-      .sidebar::-webkit-scrollbar-track {
-        background: #1f2937;
-      }
-      .sidebar::-webkit-scrollbar-thumb {
-        background: #4b5563;
-        border-radius: 3px;
-      }
-      .sidebar::-webkit-scrollbar-thumb:hover {
-        background: #6b7280;
-      }
-
-      /* Custom scrollbar for main content */
-      .main-content::-webkit-scrollbar {
-        width: 8px;
-      }
-      .main-content::-webkit-scrollbar-track {
-        background: #111827;
-      }
-      .main-content::-webkit-scrollbar-thumb {
-        background: #374151;
-        border-radius: 4px;
-      }
-      .main-content::-webkit-scrollbar-thumb:hover {
-        background: #4b5563;
       }
     </style>
   </head>
@@ -144,9 +86,9 @@
           <i class="fas fa-bars text-xl"></i>
         </button>
         <div class="flex items-center">
-          <div class="gradient-border mr-3">
+          <div class="mr-3">
             <div
-              class="bg-gray-800 rounded-lg w-10 h-10 flex items-center justify-center"
+              class="bg-gray-800 rounded-lg w-10 h-10 flex items-center justify-center border border-purple-500"
             >
               <span class="logo-text text-lg">VOT</span>
             </div>
@@ -176,7 +118,7 @@
           <h2 class="font-semibold text-gray-300">Categories</h2>
         </div>
         <div id="categoryTree" class="p-2">
-          <!-- Tree will be populated by JavaScript -->
+          <!-- Categories will load here -->
         </div>
       </div>
 
@@ -189,199 +131,8 @@
           >
             <span>Home</span>
           </div>
-
           <div id="contentArea">
-            <!-- Default content when no category is selected -->
-            <div class="max-w-4xl mx-auto">
-              <div class="gradient-border mb-8">
-                <div class="bg-gray-800 rounded-lg p-8 text-center">
-                  <div class="flex justify-center mb-6">
-                    <div class="gradient-border">
-                      <div
-                        class="bg-gray-800 rounded-lg w-24 h-24 flex items-center justify-center"
-                      >
-                        <span class="logo-text text-4xl">VOT</span>
-                      </div>
-                    </div>
-                  </div>
-                  <h2 class="text-3xl font-bold text-white mb-4">
-                    Welcome to VOT
-                  </h2>
-                  <p class="text-gray-300 text-lg mb-6 max-w-2xl mx-auto">
-                    Your personal YouTube video organizer to structure your
-                    learning journey and keep track of educational content.
-                  </p>
-                  <div class="flex justify-center space-x-6 mb-8">
-                    <div class="text-center">
-                      <div
-                        class="bg-blue-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-2"
-                      >
-                        <i class="fas fa-folder text-blue-400 text-xl"></i>
-                      </div>
-                      <p class="text-sm text-gray-400">Categories</p>
-                    </div>
-                    <div class="text-center">
-                      <div
-                        class="bg-green-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-2"
-                      >
-                        <i
-                          class="fas fa-play-circle text-green-400 text-xl"
-                        ></i>
-                      </div>
-                      <p class="text-sm text-gray-400">Videos</p>
-                    </div>
-                    <div class="text-center">
-                      <div
-                        class="bg-purple-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-2"
-                      >
-                        <i class="fas fa-check text-purple-400 text-xl"></i>
-                      </div>
-                      <p class="text-sm text-gray-400">Progress</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <div class="creator-card rounded-lg shadow p-6">
-                  <div class="flex items-center mb-4">
-                    <div
-                      class="w-12 h-12 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-full flex items-center justify-center mr-4"
-                    >
-                      <i class="fas fa-user text-white"></i>
-                    </div>
-                    <div>
-                      <h3 class="text-xl font-bold text-white">
-                        MD Niaz Uddin Tanim
-                      </h3>
-                      <p class="text-gray-400">Creator & Developer</p>
-                    </div>
-                  </div>
-                  <p class="text-gray-300 mb-4">
-                    This application was created to organize my personal
-                    learning journey through YouTube videos.
-                  </p>
-                  <div class="flex space-x-3">
-                    <div
-                      class="bg-gray-700 px-3 py-1 rounded-full text-xs text-gray-300"
-                    >
-                      #PersonalTool
-                    </div>
-                    <div
-                      class="bg-gray-700 px-3 py-1 rounded-full text-xs text-gray-300"
-                    >
-                      #Learning
-                    </div>
-                    <div
-                      class="bg-gray-700 px-3 py-1 rounded-full text-xs text-gray-300"
-                    >
-                      #Organization
-                    </div>
-                  </div>
-                </div>
-
-                <div class="bg-gray-800 rounded-lg shadow p-6">
-                  <h3 class="text-xl font-bold text-white mb-4">
-                    About This Project
-                  </h3>
-                  <p class="text-gray-300 mb-4">
-                    This is my personal YouTube video organizer where I
-                    structure all my learning materials. While it's designed for
-                    my personal use, anyone who wants to learn from my curated
-                    content is welcome to explore and benefit from it.
-                  </p>
-                  <div class="flex items-center text-gray-400">
-                    <i class="fas fa-info-circle mr-2"></i>
-                    <p>
-                      Feel free to browse through the categories and learn along
-                      with me!
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="mt-8 bg-gray-800 rounded-lg shadow p-6">
-                <h3 class="text-xl font-bold text-white mb-4">How to Use</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div class="flex items-start">
-                    <div
-                      class="bg-indigo-600 w-8 h-8 rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0"
-                    >
-                      <span class="text-white font-bold">1</span>
-                    </div>
-                    <div>
-                      <h4 class="font-semibold text-white mb-1">
-                        Browse Categories
-                      </h4>
-                      <p class="text-gray-400 text-sm">
-                        Navigate through the organized categories in the sidebar
-                      </p>
-                    </div>
-                  </div>
-                  <div class="flex items-start">
-                    <div
-                      class="bg-indigo-600 w-8 h-8 rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0"
-                    >
-                      <span class="text-white font-bold">2</span>
-                    </div>
-                    <div>
-                      <h4 class="font-semibold text-white mb-1">
-                        Select Videos
-                      </h4>
-                      <p class="text-gray-400 text-sm">
-                        Click on any category to view the curated videos
-                      </p>
-                    </div>
-                  </div>
-                  <div class="flex items-start">
-                    <div
-                      class="bg-indigo-600 w-8 h-8 rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0"
-                    >
-                      <span class="text-white font-bold">3</span>
-                    </div>
-                    <div>
-                      <h4 class="font-semibold text-white mb-1">
-                        Watch & Learn
-                      </h4>
-                      <p class="text-gray-400 text-sm">
-                        Play videos directly in the app and track your progress
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Additional content to demonstrate independent scrolling -->
-              <div class="mt-8 bg-gray-800 rounded-lg shadow p-6">
-                <h3 class="text-xl font-bold text-white mb-4">
-                  Learning Philosophy
-                </h3>
-                <p class="text-gray-300 mb-4">
-                  Organized learning leads to better retention and
-                  understanding. By categorizing educational content, we create
-                  mental models that help connect new information with existing
-                  knowledge.
-                </p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-                  <div class="bg-gray-700 p-4 rounded-lg">
-                    <h4 class="font-semibold text-white mb-2">
-                      Structured Approach
-                    </h4>
-                    <p class="text-gray-400 text-sm">
-                      Break down complex topics into manageable learning paths
-                    </p>
-                  </div>
-                  <div class="bg-gray-700 p-4 rounded-lg">
-                    <h4 class="font-semibold text-white mb-2">
-                      Progress Tracking
-                    </h4>
-                    <p class="text-gray-400 text-sm">
-                      Monitor your learning journey and celebrate milestones
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <!-- Home content will load here -->
           </div>
         </div>
       </div>
@@ -404,14 +155,13 @@
           </button>
         </div>
         <div class="p-4">
-          <div class="aspect-w-16 aspect-h-9 bg-black">
+          <div class="bg-black">
             <iframe
               id="modalVideo"
               width="100%"
               height="400"
               src=""
               frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen
             ></iframe>
           </div>
@@ -422,34 +172,95 @@
       </div>
     </div>
 
-    <!-- External data file -->
+    <!-- Unlock Modal -->
+    <div
+      id="unlockModal"
+      class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 hidden"
+    >
+      <div class="bg-gray-800 rounded-lg w-11/12 max-w-md">
+        <div
+          class="flex justify-between items-center p-4 border-b border-gray-700"
+        >
+          <h3 id="unlockModalTitle" class="text-lg font-semibold text-white">
+            Unlock Content
+          </h3>
+          <button id="closeUnlockModal" class="text-gray-400 hover:text-white">
+            <i class="fas fa-times text-xl"></i>
+          </button>
+        </div>
+        <div class="p-6">
+          <div class="flex justify-center mb-4">
+            <i class="fas fa-lock text-4xl text-yellow-500"></i>
+          </div>
+          <p id="unlockModalDescription" class="text-gray-300 text-center mb-4">
+            This content is locked. Enter the access code to unlock it.
+          </p>
+          <div class="mb-4">
+            <input
+              type="password"
+              id="unlockCode"
+              placeholder="Enter access code"
+              class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:border-indigo-500"
+            />
+            <p id="unlockError" class="text-red-400 text-sm mt-2 hidden">
+              Invalid access code
+            </p>
+          </div>
+          <button
+            id="submitUnlock"
+            class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded-lg font-semibold"
+          >
+            Unlock Content
+          </button>
+        </div>
+      </div>
+    </div>
+
     <script src="video-data.js"></script>
+    <script src="unlock-codes.js"></script>
 
     <script>
-      // State management
+      // Simple state
       let currentCategory = null;
       let expandedCategories = new Set();
+      let currentUnlockTarget = null;
 
       // DOM elements
       const categoryTree = document.getElementById("categoryTree");
       const contentArea = document.getElementById("contentArea");
       const breadcrumb = document.getElementById("breadcrumb");
-      const videoModal = document.getElementById("videoModal");
-      const modalVideo = document.getElementById("modalVideo");
-      const modalTitle = document.getElementById("modalTitle");
-      const videoDescription = document.getElementById("videoDescription");
-      const closeModal = document.getElementById("closeModal");
-      const menuToggle = document.getElementById("menuToggle");
-      const sidebar = document.getElementById("sidebar");
-      const overlay = document.getElementById("overlay");
 
-      // Initialize the application
+      // Initialize
       function init() {
         renderCategoryTree(videoData, categoryTree, 0);
+        showHome();
         setupEventListeners();
       }
 
-      // Render the category tree
+      // Check if category is unlocked
+      function isCategoryUnlocked(categoryId) {
+        const unlocked = localStorage.getItem("votUnlockedCategories");
+        if (!unlocked) return false;
+
+        const data = JSON.parse(unlocked);
+        const unlockInfo = data[categoryId];
+        if (!unlockInfo) return false;
+
+        // Check if 1 month has passed
+        const oneMonthAgo = new Date();
+        oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
+        return new Date(unlockInfo.unlockedAt) > oneMonthAgo;
+      }
+
+      // Save unlocked category
+      function saveUnlockedCategory(categoryId) {
+        const unlocked = localStorage.getItem("votUnlockedCategories");
+        const data = unlocked ? JSON.parse(unlocked) : {};
+        data[categoryId] = { unlockedAt: new Date().toISOString() };
+        localStorage.setItem("votUnlockedCategories", JSON.stringify(data));
+      }
+
+      // Render category tree
       function renderCategoryTree(categories, container, level) {
         container.innerHTML = "";
 
@@ -457,10 +268,12 @@
           const hasChildren = category.children && category.children.length > 0;
           const hasVideos = category.videos && category.videos.length > 0;
           const isExpanded = expandedCategories.has(category.id);
+          const isLocked = category.locked && !isCategoryUnlocked(category.id);
 
           const categoryElement = document.createElement("div");
-          categoryElement.className = "tree-item";
-          categoryElement.dataset.id = category.id;
+          categoryElement.className = `tree-item ${
+            isLocked ? "locked-category" : ""
+          }`;
 
           const paddingLeft = level * 20;
 
@@ -474,76 +287,128 @@
                             ? `
                             <i class="fas fa-chevron-${
                               isExpanded ? "down" : "right"
-                            } mr-2 text-gray-500 text-xs toggle-icon"></i>
+                            } mr-2 text-gray-500 text-xs"></i>
                         `
                             : `
                             <i class="fas fa-minus mr-2 text-gray-600 text-xs"></i>
                         `
                         }
                         ${
-                          hasVideos
+                          isLocked
+                            ? '<i class="fas fa-lock text-yellow-500 mr-2"></i>'
+                            : hasVideos
                             ? '<i class="fas fa-play-circle text-blue-400 mr-2"></i>'
                             : '<i class="fas fa-folder text-yellow-500 mr-2"></i>'
                         }
-                        <span class="text-gray-300 truncate">${
-                          category.name
-                        }</span>
+                        <span class="text-gray-300">${category.name}</span>
+                        ${
+                          isLocked
+                            ? '<span class="ml-2 text-xs text-yellow-500">Locked</span>'
+                            : ""
+                        }
                     </div>
                 `;
 
           container.appendChild(categoryElement);
 
-          // Add click event to toggle expansion or select category
-          const toggleElement =
-            categoryElement.querySelector(".toggle-icon")?.parentElement ||
-            categoryElement.querySelector(".flex");
+          // Click handler
+          categoryElement
+            .querySelector(".flex")
+            .addEventListener("click", (e) => {
+              e.stopPropagation();
 
-          toggleElement.addEventListener("click", (e) => {
-            e.stopPropagation();
-
-            if (hasChildren) {
-              if (isExpanded) {
-                expandedCategories.delete(category.id);
-              } else {
-                expandedCategories.add(category.id);
+              if (isLocked) {
+                showUnlockModal(category);
+                return;
               }
-              renderCategoryTree(videoData, categoryTree, 0);
-            } else if (hasVideos) {
-              selectCategory(category);
-              // Close sidebar on mobile after selection
-              if (window.innerWidth < 768) {
-                sidebar.classList.remove("open");
-                overlay.classList.remove("open");
-              }
-            }
-          });
 
-          // Render children if expanded
-          if (hasChildren && isExpanded) {
+              if (hasChildren) {
+                if (isExpanded) {
+                  expandedCategories.delete(category.id);
+                } else {
+                  expandedCategories.add(category.id);
+                }
+                renderCategoryTree(videoData, categoryTree, 0);
+              } else if (hasVideos) {
+                selectCategory(category);
+                if (window.innerWidth < 768) {
+                  document.getElementById("sidebar").classList.remove("open");
+                  document.getElementById("overlay").classList.remove("open");
+                }
+              }
+            });
+
+          // Render children
+          if (hasChildren && isExpanded && !isLocked) {
             const childrenContainer = document.createElement("div");
-            childrenContainer.className = "children-container";
             categoryElement.appendChild(childrenContainer);
             renderCategoryTree(category.children, childrenContainer, level + 1);
           }
         });
       }
 
-      // Select a category and display its videos
+      // Show unlock modal
+      function showUnlockModal(category) {
+        currentUnlockTarget = category;
+        document.getElementById(
+          "unlockModalTitle"
+        ).textContent = `Unlock: ${category.name}`;
+        document.getElementById("unlockModalDescription").textContent =
+          category.unlockMessage || "Enter access code";
+        document.getElementById("unlockCode").value = "";
+        document.getElementById("unlockError").classList.add("hidden");
+        document.getElementById("unlockModal").classList.remove("hidden");
+      }
+
+      // Hide unlock modal
+      function hideUnlockModal() {
+        document.getElementById("unlockModal").classList.add("hidden");
+        currentUnlockTarget = null;
+      }
+
+      // Handle unlock
+      function handleUnlock() {
+        const code = document.getElementById("unlockCode").value.trim();
+        const category = currentUnlockTarget;
+
+        if (!category || !code) return;
+
+        const validCode = unlockCodes[category.id];
+        if (validCode && code === validCode) {
+          saveUnlockedCategory(category.id);
+          hideUnlockModal();
+          renderCategoryTree(videoData, categoryTree, 0);
+
+          if (category.videos && category.videos.length > 0) {
+            selectCategory(category);
+          }
+        } else {
+          document.getElementById("unlockError").classList.remove("hidden");
+          document.getElementById("unlockCode").value = "";
+        }
+      }
+
+      // Select category
       function selectCategory(category) {
+        if (category.locked && !isCategoryUnlocked(category.id)) {
+          showUnlockModal(category);
+          return;
+        }
+
         currentCategory = category.id;
         renderCategoryTree(videoData, categoryTree, 0);
         displayCategoryContent(category);
         updateBreadcrumb(category);
       }
 
-      // Display category content (videos)
+      // Display category content
       function displayCategoryContent(category) {
         if (!category.videos || category.videos.length === 0) {
           contentArea.innerHTML = `
                     <div class="bg-gray-800 rounded-lg shadow p-6 text-center">
                         <i class="fas fa-folder-open text-5xl text-gray-600 mb-4"></i>
                         <h2 class="text-xl font-semibold text-gray-300 mb-2">${category.name}</h2>
-                        <p class="text-gray-500">This category doesn't contain any videos yet.</p>
+                        <p class="text-gray-500">No videos in this category yet.</p>
                     </div>
                 `;
           return;
@@ -556,33 +421,28 @@
                     }</h2>
                     <p class="text-gray-400">${category.videos.length} video${
           category.videos.length !== 1 ? "s" : ""
-        } in this category</p>
+        }</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             `;
 
         category.videos.forEach((video) => {
-          const progressClass = video.completed
-            ? "bg-green-600"
-            : "bg-gray-700";
-          const progressText = video.completed ? "Completed" : "Not Started";
-
           videosHTML += `
-                    <div class="bg-gray-800 rounded-lg shadow overflow-hidden video-card" data-video-id="${video.id}">
+                    <div class="bg-gray-800 rounded-lg shadow overflow-hidden">
                         <div class="relative">
                             <img src="https://img.youtube.com/vi/${video.youtubeId}/mqdefault.jpg" 
                                  alt="${video.title}" class="w-full h-40 object-cover">
                             <div class="absolute bottom-2 right-2 bg-black bg-opacity-80 text-white text-xs px-2 py-1 rounded">
                                 ${video.duration}
                             </div>
-                            <div class="absolute top-2 right-2 ${progressClass} text-white text-xs px-2 py-1 rounded">
-                                ${progressText}
-                            </div>
                         </div>
                         <div class="p-4">
-                            <h3 class="font-semibold text-white mb-2 line-clamp-2">${video.title}</h3>
-                            <p class="text-gray-400 text-sm mb-4 line-clamp-2">${video.description}</p>
-                            <button class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white py-2 px-4 rounded flex items-center justify-center play-video-btn" data-video-id="${video.youtubeId}" data-video-title="${video.title}" data-video-description="${video.description}">
+                            <h3 class="font-semibold text-white mb-2">${video.title}</h3>
+                            <p class="text-gray-400 text-sm mb-4">${video.description}</p>
+                            <button class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded play-video-btn" 
+                                    data-video-id="${video.youtubeId}" 
+                                    data-video-title="${video.title}" 
+                                    data-video-description="${video.description}">
                                 <i class="fas fa-play mr-2"></i> Watch Video
                             </button>
                         </div>
@@ -593,25 +453,25 @@
         videosHTML += `</div>`;
         contentArea.innerHTML = videosHTML;
 
-        // Add event listeners to video play buttons
+        // Add video play handlers
         document.querySelectorAll(".play-video-btn").forEach((button) => {
           button.addEventListener("click", (e) => {
-            const videoId =
-              e.target.dataset.videoId ||
-              e.target.closest(".play-video-btn").dataset.videoId;
-            const videoTitle =
-              e.target.dataset.videoTitle ||
-              e.target.closest(".play-video-btn").dataset.videoTitle;
-            const videoDescription =
-              e.target.dataset.videoDescription ||
-              e.target.closest(".play-video-btn").dataset.videoDescription;
+            const videoId = button.dataset.videoId;
+            const videoTitle = button.dataset.videoTitle;
+            const videoDescription = button.dataset.videoDescription;
 
-            openVideoModal(videoId, videoTitle, videoDescription);
+            document.getElementById(
+              "modalVideo"
+            ).src = `https://www.youtube.com/embed/${videoId}`;
+            document.getElementById("modalTitle").textContent = videoTitle;
+            document.getElementById("videoDescription").textContent =
+              videoDescription;
+            document.getElementById("videoModal").classList.remove("hidden");
           });
         });
       }
 
-      // Update breadcrumb navigation
+      // Update breadcrumb
       function updateBreadcrumb(category) {
         breadcrumb.innerHTML = `
                 <span class="cursor-pointer text-blue-400 hover:text-blue-300" onclick="showHome()">Home</span>
@@ -620,113 +480,37 @@
             `;
       }
 
-      // Show home/default content
+      // Show home page
       function showHome() {
         currentCategory = null;
         renderCategoryTree(videoData, categoryTree, 0);
         contentArea.innerHTML = `
                 <div class="max-w-4xl mx-auto">
-                    <div class="gradient-border mb-8">
-                        <div class="bg-gray-800 rounded-lg p-8 text-center">
-                            <div class="flex justify-center mb-6">
-                                <div class="gradient-border">
-                                    <div class="bg-gray-800 rounded-lg w-24 h-24 flex items-center justify-center">
-                                        <span class="logo-text text-4xl">VOT</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <h2 class="text-3xl font-bold text-white mb-4">Welcome to VOT</h2>
-                            <p class="text-gray-300 text-lg mb-6 max-w-2xl mx-auto">
-                                Your personal YouTube video organizer to structure your learning journey and keep track of educational content.
-                            </p>
-                            <div class="flex justify-center space-x-6 mb-8">
-                                <div class="text-center">
-                                    <div class="bg-blue-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-2">
-                                        <i class="fas fa-folder text-blue-400 text-xl"></i>
-                                    </div>
-                                    <p class="text-sm text-gray-400">Categories</p>
-                                </div>
-                                <div class="text-center">
-                                    <div class="bg-green-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-2">
-                                        <i class="fas fa-play-circle text-green-400 text-xl"></i>
-                                    </div>
-                                    <p class="text-sm text-gray-400">Videos</p>
-                                </div>
-                                <div class="text-center">
-                                    <div class="bg-purple-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-2">
-                                        <i class="fas fa-check text-purple-400 text-xl"></i>
-                                    </div>
-                                    <p class="text-sm text-gray-400">Progress</p>
-                                </div>
+                    <div class="bg-gray-800 rounded-lg shadow p-8 text-center mb-8">
+                        <div class="flex justify-center mb-6">
+                            <div class="bg-gray-800 rounded-lg w-24 h-24 flex items-center justify-center border-2 border-purple-500">
+                                <span class="logo-text text-4xl">VOT</span>
                             </div>
                         </div>
+                        <h2 class="text-3xl font-bold text-white mb-4">Welcome to VOT</h2>
+                        <p class="text-gray-300 text-lg mb-6">
+                            Your personal YouTube video organizer
+                        </p>
                     </div>
 
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                        <div class="creator-card rounded-lg shadow p-6">
-                            <div class="flex items-center mb-4">
-                                <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-full flex items-center justify-center mr-4">
-                                    <i class="fas fa-user text-white"></i>
-                                </div>
-                                <div>
-                                    <h3 class="text-xl font-bold text-white">MD Niaz Uddin Tanim</h3>
-                                    <p class="text-gray-400">Creator & Developer</p>
-                                </div>
-                            </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                        <div class="bg-gray-800 rounded-lg shadow p-6">
+                            <h3 class="text-xl font-bold text-white mb-4">MD Niaz Uddin Tanim</h3>
                             <p class="text-gray-300 mb-4">
-                                This application was created to organize my personal learning journey through YouTube videos.
+                                This is my personal YouTube video organizer. Feel free to explore and learn from my curated content.
                             </p>
-                            <div class="flex space-x-3">
-                                <div class="bg-gray-700 px-3 py-1 rounded-full text-xs text-gray-300">#PersonalTool</div>
-                                <div class="bg-gray-700 px-3 py-1 rounded-full text-xs text-gray-300">#Learning</div>
-                                <div class="bg-gray-700 px-3 py-1 rounded-full text-xs text-gray-300">#Organization</div>
-                            </div>
                         </div>
 
                         <div class="bg-gray-800 rounded-lg shadow p-6">
                             <h3 class="text-xl font-bold text-white mb-4">About This Project</h3>
-                            <p class="text-gray-300 mb-4">
-                                This is my personal YouTube video organizer where I structure all my learning materials. 
-                                While it's designed for my personal use, anyone who wants to learn from my curated content 
-                                is welcome to explore and benefit from it.
+                            <p class="text-gray-300">
+                                Organized learning materials for everyone to benefit from.
                             </p>
-                            <div class="flex items-center text-gray-400">
-                                <i class="fas fa-info-circle mr-2"></i>
-                                <p>Feel free to browse through the categories and learn along with me!</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mt-8 bg-gray-800 rounded-lg shadow p-6">
-                        <h3 class="text-xl font-bold text-white mb-4">How to Use</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <div class="flex items-start">
-                                <div class="bg-indigo-600 w-8 h-8 rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0">
-                                    <span class="text-white font-bold">1</span>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-white mb-1">Browse Categories</h4>
-                                    <p class="text-gray-400 text-sm">Navigate through the organized categories in the sidebar</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start">
-                                <div class="bg-indigo-600 w-8 h-8 rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0">
-                                    <span class="text-white font-bold">2</span>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-white mb-1">Select Videos</h4>
-                                    <p class="text-gray-400 text-sm">Click on any category to view the curated videos</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start">
-                                <div class="bg-indigo-600 w-8 h-8 rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0">
-                                    <span class="text-white font-bold">3</span>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-white mb-1">Watch & Learn</h4>
-                                    <p class="text-gray-400 text-sm">Play videos directly in the app and track your progress</p>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -734,56 +518,66 @@
         breadcrumb.innerHTML = "<span>Home</span>";
       }
 
-      // Open video modal
-      function openVideoModal(videoId, title, description) {
-        modalVideo.src = `https://www.youtube.com/embed/${videoId}`;
-        modalTitle.textContent = title;
-        videoDescription.textContent = description;
-        videoModal.classList.remove("hidden");
-      }
-
-      // Close video modal
-      function closeVideoModal() {
-        videoModal.classList.add("hidden");
-        modalVideo.src = "";
-      }
-
-      // Toggle mobile sidebar
-      function toggleSidebar() {
-        sidebar.classList.toggle("open");
-        overlay.classList.toggle("open");
-      }
-
-      // Set up event listeners
+      // Setup event listeners
       function setupEventListeners() {
-        closeModal.addEventListener("click", closeVideoModal);
+        // Video modal
+        document.getElementById("closeModal").addEventListener("click", () => {
+          document.getElementById("videoModal").classList.add("hidden");
+          document.getElementById("modalVideo").src = "";
+        });
 
-        videoModal.addEventListener("click", (e) => {
-          if (e.target === videoModal) {
-            closeVideoModal();
+        document.getElementById("videoModal").addEventListener("click", (e) => {
+          if (e.target === document.getElementById("videoModal")) {
+            document.getElementById("videoModal").classList.add("hidden");
+            document.getElementById("modalVideo").src = "";
           }
         });
 
+        // Unlock modal
+        document
+          .getElementById("closeUnlockModal")
+          .addEventListener("click", hideUnlockModal);
+        document
+          .getElementById("unlockModal")
+          .addEventListener("click", (e) => {
+            if (e.target === document.getElementById("unlockModal")) {
+              hideUnlockModal();
+            }
+          });
+        document
+          .getElementById("submitUnlock")
+          .addEventListener("click", handleUnlock);
+        document
+          .getElementById("unlockCode")
+          .addEventListener("keypress", (e) => {
+            if (e.key === "Enter") handleUnlock();
+          });
+
+        // Mobile menu
+        document.getElementById("menuToggle").addEventListener("click", () => {
+          document.getElementById("sidebar").classList.toggle("open");
+          document.getElementById("overlay").classList.toggle("open");
+        });
+
+        document.getElementById("overlay").addEventListener("click", () => {
+          document.getElementById("sidebar").classList.remove("open");
+          document.getElementById("overlay").classList.remove("open");
+        });
+
+        // Escape key
         document.addEventListener("keydown", (e) => {
           if (e.key === "Escape") {
-            closeVideoModal();
+            document.getElementById("videoModal").classList.add("hidden");
+            document.getElementById("modalVideo").src = "";
+            hideUnlockModal();
           }
         });
 
-        menuToggle.addEventListener("click", toggleSidebar);
-
-        overlay.addEventListener("click", toggleSidebar);
-
-        // Close sidebar when window is resized to desktop size
-        window.addEventListener("resize", () => {
-          if (window.innerWidth >= 768) {
-            sidebar.classList.remove("open");
-            overlay.classList.remove("open");
-          }
-        });
+        // Make showHome global
+        window.showHome = showHome;
       }
 
-      // Initialize the app when DOM is loaded
+      // Start the app
       document.addEventListener("DOMContentLoaded", init);
     </script>
   </body>
